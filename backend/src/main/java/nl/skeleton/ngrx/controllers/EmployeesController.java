@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import nl.skeleton.ngrx.models.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -47,15 +48,27 @@ public class EmployeesController {
     }
 
     @CrossOrigin("http://localhost:4200")
-    @PostMapping(value = "/employees", produces = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<String> createEmployee(@RequestBody Employee employee) {
+    @PostMapping(value = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseMessage> createEmployee(@RequestBody Employee employee) {
         if(this.employees.containsKey(employee.getId())) {
-            return new ResponseEntity<>("Employee already exists", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ResponseMessage("Employee already exists"), HttpStatus.BAD_REQUEST);
         }
 
         this.employees.put(employee.getId(), employee);
 
-        return new ResponseEntity<>("Employee created successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponseMessage("Employee created successfully"), HttpStatus.CREATED);
+    }
+
+    @CrossOrigin("http://localhost:4200")
+    @DeleteMapping(value = "/employees/{employeeId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseMessage> deleteEmployeeById(@PathVariable Long employeeId) {
+        if(!this.employees.containsKey(employeeId)) {
+            return new ResponseEntity<>(new ResponseMessage("Employee not found"), HttpStatus.NOT_FOUND);
+        }
+
+        this.employees.remove(employeeId);
+
+        return new ResponseEntity<>(new ResponseMessage("Employee removed successfully"), HttpStatus.OK);
     }
 
     private Employee createEmployee(Long id, String name, String department, String position, Double salary) {

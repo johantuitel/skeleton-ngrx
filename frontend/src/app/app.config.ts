@@ -10,8 +10,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(
-    StoreModule.forRoot(),
-    EffectsModule.forRoot([]),
+      StoreModule.forRoot(),
+      EffectsModule.forRoot([]),
       StoreDevtoolsModule.instrument({
         maxAge: 250,
         logOnly: true,

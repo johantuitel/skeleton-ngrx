@@ -1,8 +1,8 @@
-import { ActionCreator, ActionReducer, createReducer, on } from '@ngrx/store';
-import { ErrorAction } from './actions/error.action';
+import {ActionCreator, ActionReducer, createReducer, on} from '@ngrx/store';
+import {HttpState, initialHttpState} from './http.state';
+import {HttpStatus} from './http.status';
 import { SuccessAction } from './actions/success.action';
-import { HttpState, initialHttpState } from './http.state';
-import { HttpStatus } from './http.status';
+import { ErrorAction } from './actions/error.action';
 
 export function createHttpReducer<T, E>(
   initAction: ActionCreator,

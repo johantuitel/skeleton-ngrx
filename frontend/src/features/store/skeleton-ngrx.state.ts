@@ -1,9 +1,9 @@
 import { EmployeeState, initialEmployeeState } from "../employee/store/employee.state";
 
 export interface SkeletonNgrxState {
-  employee: string;
+  employee: EmployeeState
 }
 
 export const initialSkeletonNgrxState: SkeletonNgrxState = {
-  employee: '',
+  employee: initialEmployeeState
 };

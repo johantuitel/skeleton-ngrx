@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { Store } from '@ngrx/store';
+import { fetchEmployees } from '../features/employee/store/employee.actions';
 import { SkeletonNgrxModule } from '../features/store/skeleton-ngrx.module';
+import { EmployeesComponentsModule } from 'src/features/employee/components/employees-components.module';
 
 class Employee {}
 @UntilDestroy()
@@ -12,24 +11,16 @@ class Employee {}
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
-    HttpClientModule,
-    CommonModule,
-    FormsModule,
     SkeletonNgrxModule,
+    EmployeesComponentsModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'skeleton-ngrx';
+export class AppComponent  implements OnInit {
+  ngOnInit(): void {
+    this.store.dispatch(fetchEmployees());
+  }
 
-  employees: Array<Employee> = [];
-  employee: Employee = {
-    id: 0,
-    name: '',
-    department: '',
-    position: '',
-    salary: 0,
-  };
+  constructor(private readonly store: Store) {}
 }

@@ -6,5 +6,5 @@ import { createEmployeeReducer } from '../employee/store/employee.reducer';
 export const FEATURE_STATE_KEY = 'skeleton-ngrx';
 
 export const skeletonNgrxReducer: ActionReducerMap<SkeletonNgrxState, any> = {
-  employee: createReducer<string, any>(''),
+  employee: createEmployeeReducer()
 }

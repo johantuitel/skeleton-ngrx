@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Employee } from "../api/types/employee";
 import { Immutable } from "../../http/immutable";
+import { Employee } from "../api/employee";
 
 @Injectable({
     providedIn: "root"
@@ -25,7 +25,7 @@ export class EmployeeService {
         return this.httpClient.post<ArrayBuffer>(this.PATH, employee);
     }
 
-    deleteEmployee(id: Immutable<string>): Observable<ArrayBuffer> {
-        return this.httpClient.delete<ArrayBuffer>(this.PATH + '/' + id);
+    deleteEmployee(id: Immutable<string>): Observable<string> {
+        return this.httpClient.delete<string>(this.PATH + '/' + id);
     }
 }

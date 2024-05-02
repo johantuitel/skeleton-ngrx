@@ -5,6 +5,7 @@ import { CounterOutputComponent } from './counter-output/counter-output.componen
 import { CounterControlsComponent } from './counter-controls/counter-controls.component';
 import { IntroNgrxModule } from 'src/features/store/intro-ngrx.module';
 import { init } from 'src/features/counter/counter.actions';
+import { fetchEmployees } from 'src/features/employee/employee.actions';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { init } from 'src/features/counter/counter.actions';
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(init());
+    this.store.dispatch(fetchEmployees());
   }
 
   constructor(private store: Store) {}

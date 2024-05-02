@@ -1,6 +1,5 @@
 import { Action, ActionReducer, combineReducers } from '@ngrx/store';
 
-import { EmployeeState, Employee } from '../../employee/public-api';
 import {
   fetchEmployees,
   fetchEmployeesSuccess,
@@ -18,8 +17,10 @@ import {
   deleteEmployeeSuccess,
   deleteEmployeeError,
   deleteEmployeeClear
-} from '../../employee/public-api';
-import { createHttpReducer } from '../../http/public-api';
+} from '../../employee/store/employee.actions';
+import { createHttpReducer } from '../../http/create.http.reducer';
+import { Employee } from '../api/types/employee';
+import { EmployeeState } from './employee.state';
 
 const fetchReducer = createHttpReducer<Array<Employee>, unknown>(
   fetchEmployees,
@@ -47,10 +48,10 @@ const deleteReducer = createHttpReducer<string, unknown>(
 );
 
 const employeeReducer = combineReducers<EmployeeState>({
-  fetch: fetchReducer,
-  create: createReducer,
-  update: updateReducer,
-  delete: deleteReducer,
+  // fetch: fetchReducer,
+  // create: createReducer,
+  // update: updateReducer,
+  // delete: deleteReducer,
 });
 
 export function createEmployeeReducer(): ActionReducer<EmployeeState, Action> {

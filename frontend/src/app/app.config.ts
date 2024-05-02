@@ -3,11 +3,15 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     importProvidersFrom(
+    StoreModule.forRoot(),
+    EffectsModule.forRoot([]),
       StoreDevtoolsModule.instrument({
         maxAge: 250,
         logOnly: true,
@@ -17,6 +21,7 @@ export const appConfig: ApplicationConfig = {
             persist: true,
             jump: true,
         },
-    }))
+    })
+    )
   ]
 };

@@ -1,10 +1,10 @@
-import { FEATURE_STATE_KEY, skeletonNgrxReducer } from './skeleton-ngrx.reducer';
 
 import { CommonModule } from '@angular/common';
-import { SkeletonNgrxEffects } from './skeleton-ngrx.effects';
-import { EffectsModule } from '@ngrx/effects';
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
+import { SkeletonNgrxEffects } from './skeleton-ngrx.effects';
 import { StoreModule } from '@ngrx/store';
+import { FEATURE_STATE_KEY, skeletonNgrxReducer } from './skeleton-ngrx.reducer';
 
 @NgModule({
   imports: [

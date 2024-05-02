@@ -1,6 +1,6 @@
 import { createHttpCreateActions, createHttpUpdateActions, createHttpFetchAllActions } from '../http/create.http.actions';
 import { createHttpDeleteActions } from "../http/create.http.delete.actions";
-import { Employee } from './types/employee';
+import { Employee } from './api/employee';
 
 const ACTION_PREFIX = 'Employee';
 export const [fetchEmployees, fetchEmployeesSuccess, fetchEmployeesError, fetchEmployeesClear] = createHttpFetchAllActions<string, Array<Employee>>(ACTION_PREFIX);

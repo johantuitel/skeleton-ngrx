@@ -8,8 +8,6 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    // provideStore({ counter: counterReducer }),
-    // provideEffects([CounterEffects]),
     importProvidersFrom(
       StoreModule.forRoot(),
       EffectsModule.forRoot([]),

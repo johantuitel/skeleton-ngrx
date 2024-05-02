@@ -21,7 +21,7 @@ import {
 } from './employee.actions';
 import { HttpError } from '../http/http.error.type';
 import { EmployeeService } from './services/employees-service';
-import { Employee } from './types/employee';
+import { Employee } from './api/employee';
 
 @Injectable()
 export class EmployeeEffects {

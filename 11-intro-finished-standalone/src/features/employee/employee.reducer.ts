@@ -20,7 +20,7 @@ import {
   deleteEmployeeClear
 } from './employee.actions';
 import { createHttpReducer } from '../http/create.http.reducer';
-import { Employee } from './types/employee';
+import { Employee } from './api/employee';
 
 const fetchReducer = createHttpReducer<Array<Employee>, unknown>(
   fetchEmployees,

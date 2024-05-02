@@ -1,5 +1,5 @@
 import { HttpState, initialHttpState } from '../http/http.state';
-import { Employee } from './types/employee';
+import { Employee } from './api/employee';
 export interface EmployeeState {
     fetch: HttpState<Array<Employee>, unknown>;
     create: HttpState<Employee, unknown>;

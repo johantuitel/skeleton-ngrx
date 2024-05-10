@@ -13,7 +13,6 @@ export function createHttpReducer<T, E>(
   return createReducer(
     initialHttpState,
     on(initAction, (state, action) => {
-      console.log('>>>> action init', action.type);
       return ({
         ...state,
         status: HttpStatus.PENDING,
@@ -22,7 +21,6 @@ export function createHttpReducer<T, E>(
       });
     }),
     on(succesAction, (state, action) => {
-      console.log('>>>> action success', action.type, action.payload);
       return ({
           ...state,
           status: HttpStatus.SUCCESS,
@@ -32,7 +30,6 @@ export function createHttpReducer<T, E>(
       }
     ),
     on(errorAction, (state, action) => {
-      console.log('>>>> action error', action.type);
       return ({
         ...state,
         status: HttpStatus.ERROR,

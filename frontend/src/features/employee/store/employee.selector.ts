@@ -10,6 +10,10 @@ export const fetchData = createSelector(fetchState, state => state.data);
 export const fetchStatus = createSelector(fetchState, state => state.status);
 export const fetchError = createSelector(fetchState, state => state.error);
 
+export const selectState = createSelector(employeeState, state => state.select);
+export const selectData = createSelector(selectState, state => state.data);
+export const selectStatus = createSelector(selectState, state => state.status);
+
 export const createState = createSelector(employeeState, state => state.create);
 export const createStatus = createSelector(createState, state => state.status);
 export const createError = createSelector(createState, state => state.error);

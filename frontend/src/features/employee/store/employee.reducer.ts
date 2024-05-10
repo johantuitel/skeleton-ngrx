@@ -6,6 +6,9 @@ import {
   fetchEmployeesSuccess,
   fetchEmployeesError,
   fetchEmployeesClear,
+  selectEmployee,
+  selectEmployeeSuccess,
+  selectEmployeeClear,
   createEmployee,
   createEmployeeSuccess,
   createEmployeeError,
@@ -21,12 +24,18 @@ import {
 } from './employee.actions';
 import { createHttpReducer } from '../../http/create.http.reducer';
 import { Employee } from '../api/employee';
+import { createItemReducer } from 'src/features/http/create.item.reducer';
 
 const fetchReducer = createHttpReducer<Array<Employee>, unknown>(
   fetchEmployees,
   fetchEmployeesSuccess,
   fetchEmployeesError,
   fetchEmployeesClear
+);
+const selectReducer = createItemReducer<Employee>(
+  selectEmployee,
+  selectEmployeeSuccess,
+  selectEmployeeClear
 );
 const createReducer = createHttpReducer<Employee, unknown>(
   createEmployee,
@@ -49,6 +58,7 @@ const deleteReducer = createHttpReducer<string, unknown>(
 
 const employeeReducer = combineReducers<EmployeeState>({
   fetch: fetchReducer,
+  select: selectReducer,
   create: createReducer,
   update: updateReducer,
   delete: deleteReducer,

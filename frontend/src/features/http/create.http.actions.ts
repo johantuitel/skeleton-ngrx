@@ -25,9 +25,9 @@ export function createHttpFetchSummaryActions<T1, T2>(prefixType: string): [
 
 export function createHttpFetchAllActions<T1, T2>(prefixType: string): [
   ActionCreator<string, () => TypedAction<string>>,
-  ActionCreator<string, (props: Immutable<{payload: T2}>) => Immutable<{payload: T2}> & TypedAction<string>>,
-  ActionCreator<string, (props: Immutable<{error: HttpError}>) => Immutable<{error: HttpError}> & TypedAction<string>>,
-  ActionCreator<string, (props: Immutable<{payload: T2}>) => Immutable<{payload: T2}> & TypedAction<string>>,
+  ActionCreator<string, (props: {payload: Immutable<T2>}) => {payload: Immutable<T2>} & TypedAction<string>>,
+  ActionCreator<string, (props: {error: Immutable<HttpError>}) => {error: Immutable<HttpError>} & TypedAction<string>>,
+  ActionCreator<string, (props: {payload: Immutable<T2>}) => {payload: Immutable<T2>} & TypedAction<string>>,
 ] {
   const prefix = createActionPrefix(prefixType, 'fetch all');
   return [

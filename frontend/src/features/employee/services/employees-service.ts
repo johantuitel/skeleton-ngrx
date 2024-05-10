@@ -13,8 +13,8 @@ export class EmployeeService {
 
     constructor(private readonly httpClient: HttpClient) {}
 
-    fetchAllEmployees(): Observable<Array<Employee>> {
-       return this.httpClient.get<Array<Employee>>(this.PATH);
+    fetchAllEmployees(): Observable<Immutable<Array<Employee>>> {
+       return this.httpClient.get<Immutable<Array<Employee>>>(this.PATH);
     }
 
     updateEmployee(employee: Employee): Observable<ArrayBuffer> {

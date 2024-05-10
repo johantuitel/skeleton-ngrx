@@ -4,8 +4,8 @@ import { Observable } from "rxjs";
 import { Immutable } from "../../http/immutable";
 import { SkeletonNgrxState } from "../../store/skeleton-ngrx.state";
 import { Employee } from "../api/employee";
-import { createEmployee, deleteEmployee, fetchEmployees, updateEmployee } from "./employee.actions";
-import { fetchData } from "./employee.selector";
+import { createEmployee, deleteEmployee, fetchEmployees, selectEmployee, updateEmployee } from "./employee.actions";
+import { fetchData, selectData } from "./employee.selector";
 
 @Injectable()
 export class EmployeeFacade {
@@ -13,6 +13,10 @@ export class EmployeeFacade {
 
     fetchEmployees(): void {
         this.store.dispatch(fetchEmployees())
+    }
+
+    selectEmployee(employee: Immutable<Employee>): void {
+        this.store.dispatch(selectEmployee({payload: employee}));
     }
 
     createEmployee(employee: Immutable<Employee>): void {
@@ -29,5 +33,9 @@ export class EmployeeFacade {
 
     getAllEmployees(): Observable<Array<Employee> | undefined> {
         return this.store.select(fetchData);
+    }
+
+    getSelectedEmployee(): Observable<Employee | undefined> {
+        return this.store.select(selectData);
     }
 }

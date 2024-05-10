@@ -1,3 +1,7 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+  <h2>Employee Management</h2>
+  <button style="height: 2rem; width: 5rem; background-color: lightsalmon; cursor: pointer" (click)="new()">New</button>
+</div>
 <table>
     <thead>
       <tr>
@@ -17,8 +21,8 @@
         <td>{{employee.department}}</td>
         <td>{{employee.salary}}</td>
         <td>
-            <a (click)="edit(employee)">Edit</a>
-            <a style="margin-left: 1rem" (click)="remove(employee.id)">Remove</a>
+            <a style="cursor: pointer;" (click)="edit(employee)">Edit</a>
+            <a style="cursor: pointer; margin-left: 1rem" (click)="remove(employee.id)">Remove</a>
         </td>
       </tr>
     </tbody>

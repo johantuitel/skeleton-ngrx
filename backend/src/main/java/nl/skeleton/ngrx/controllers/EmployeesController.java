@@ -50,6 +50,9 @@ public class EmployeesController {
     @CrossOrigin("http://localhost:4200")
     @PostMapping(value = "/employees", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseMessage> createEmployee(@RequestBody Employee employee) {
+        if (employee.getId() == null) {
+            employee.setId(getHighestKey() + 1);
+        }
         if(this.employees.containsKey(employee.getId())) {
             return new ResponseEntity<>(new ResponseMessage("Employee already exists"), HttpStatus.BAD_REQUEST);
         }
@@ -80,5 +83,15 @@ public class EmployeesController {
         employee.setSalary(salary);
 
         return employee;
+    }
+
+    private Long getHighestKey() {
+        Long highestKey = 1L;
+        for (Long key : employees.keySet()) {
+            if (key > highestKey) {
+                highestKey = key;
+            }
+        }
+        return highestKey;
     }
 }
